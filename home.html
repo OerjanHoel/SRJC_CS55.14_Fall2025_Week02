@@ -5,15 +5,80 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <link rel="stylesheet" href="">
+    <title>Week 2 React.js with NODE.js and JSON Import</title>
+    <!-- jQuery Script for jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Babel transpiler JSX to JS. Only for development-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- <meta name="description" content=""> -->
+    <!-- <link rel="stylesheet" href=""> -->
 </head>
 
 <body>
+    <!-- Root element for the React Application. Where -->
+    <div id="reactApp"></div>
 
+    <!-- React Script for compnents -->
+    <script data-type="module" data-presets="react" type="text/babel">
+        "use strict";
 
-    <script src=""></script>
+        // load react as js module
+        import React from 'https://cdn.jsdelivr.net/npm/react@19.1.1/+esm';
+        // load createRoot method from ReactDOM/client
+        import { createRoot } from 'https://cdn.jsdelivr.net/npm/react-dom@19.1.1/client/+esm';
+        // Import images from JSON file
+        // import Content from '/content.json';
+
+        // define a react page component (some JSX that will get react to make html elements
+        function ProjectList(props) {
+                    
+                    // return some output for the component using JSX
+                    return <div>
+                        <h1>Week 2 Node JS and React JS Project</h1>
+                        {
+                            // map() Loops through the array
+                            props.list.map(
+                                (item) => (
+                                    <ul>
+                                    <img src={item.image} 
+                                    width={50}
+                                    height={50} />
+                                    {
+                                <li>
+                                    <a href={item.link}>
+                                        {item.firstname}
+                                    </a>
+                                </li>
+                }
+                    </ul>
+                )
+            )
+        } 
+            </div >;
+
+        }
+
+        // use jQuery to load JSON
+        // getJSON 2 arguments: URL, a function that receives JSON
+        $.getJSON(
+            "Get JSON items",
+            function (jsonFromJquery) {
+                // after JSON loaded
+                console.log(jsonFromJquery);
+                // fire up React and build our app
+                // find html element
+                const myApplication = document.getElementById('reactApp');
+                // reactDOM createRoot() to identify root HTML element for app
+                const myRoot = createRoot(myApplication);
+                // then call react render() to output component into existing element
+                myRoot.render(
+                    <ProjectList list={jsonFromJquery} />
+
+                );
+            }
+        );
+
+    </script>
 </body>
 
 </html>
