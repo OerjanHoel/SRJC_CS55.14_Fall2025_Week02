@@ -11,6 +11,7 @@ const port = 8080;
 
 // Create the instance that will serve the html file
 const requestListener = function (req, res) {
+    console.log(req.url)
     fs.readFile(__dirname + "/home.html")
         // Use then() method if html file able to resolve. 200 Standard succes code
         .then(contents => {
@@ -18,7 +19,7 @@ const requestListener = function (req, res) {
             res.writeHead(200);
             res.end(contents);
         })
-        // Use catch() method if file is nt found. 500 Internal server error
+        // Use catch() method if file is not found. 500 Internal server error
         .catch(err => {
             res.writeHead(500);
             res.end(err);
@@ -27,7 +28,10 @@ const requestListener = function (req, res) {
 };
 
 // Create the server
-const server = http.createServer(requestListener);
-server.listen(port, host, () => {
+const nodeServer = http.createServer(
+    requestListener
+);
+// Listen for incoming requests
+nodeServer.listen(port, host, () => {
     console.log(`Server is running on http://${host}:${port}`);
 });

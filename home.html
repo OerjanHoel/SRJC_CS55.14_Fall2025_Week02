@@ -30,7 +30,7 @@
         function ProjectApp(props) {
                // return some output for the component using JSX
                 return  <div>
-                    <h1>Find more info about various BackEnd Languages</h1>
+                    <h1>Find more info about various BackEnd Technologies</h1>
                             <ul>
                             {
                                 // use map() to loop thru array passed in props.list
@@ -38,12 +38,8 @@
                                     // Array items added to our JSX markup
                                     (item,index) => (
                                         <li key={index}>
-                                            <a href={item.pageLink}>
-                                                {item.langName}
-                                            </a>
-                                            <p>
-                                                {item.info}
-                                            </p>                                            
+                                            <a href={item.pageLink}>{item.langName}</a>
+                                            <p>{item.info}</p>
                                         </li>
                                     )
                                 )
@@ -54,7 +50,7 @@
 
         // jQuery code loads JSON file into our browser
         $.getJSON(
-            "JSON File loaded",
+            "content.json",
             function (jsonFromJquery) {
                 // after JSON loaded
                 console.log(jsonFromJquery);
