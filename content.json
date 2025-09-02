@@ -1,17 +1,20 @@
 [
     {
-        "firstname":"React",
-        "link":"https://www.react.dev",
+        "id": "1",
+        "langName":"React",
+        "url":"https://www.react.dev",
         "imagePath":"../images/react.svg"
     },
     {
-        "firstname":"NodeJS",
-        "link":"https://www.nodejs.org",
+        "id": "2",
+        "langName":"NodeJS",
+        "url":"https://www.nodejs.org",
         "imagePath":"../images/nodejs.svg"
     },
     {
-        "firstname":"Python",
-        "link":"https://www.python.org/",
+        "id": "3",
+        "langName":"Python",
+        "url":"https://www.python.org/",
         "imagePath":"../images/python.svg"
     }
 ]
