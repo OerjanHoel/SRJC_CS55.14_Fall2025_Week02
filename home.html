@@ -17,61 +17,54 @@
 <body>
     <!-- Root element for the React Application. Where -->
     <div id="reactApp"></div>
-
-    <!-- React Script for compnents -->
+    <!-- React Script for components -->
     <script data-type="module" data-presets="react" type="text/babel">
         "use strict";
-
+        
         // load react as js module
         import React from 'https://cdn.jsdelivr.net/npm/react@19.1.1/+esm';
         // load createRoot method from ReactDOM/client
         import { createRoot } from 'https://cdn.jsdelivr.net/npm/react-dom@19.1.1/client/+esm';
-      
+
         // define a react page component (some JSX that will get react to make html elements
-        function projectApp(props) {
-                    
-                    // return some output for the component using JSX
-                    return <div>
-                        <h1>Week 2 Node JS and React JS Project</h1>
-                        {
-                            // map() Loops through the array
-                            props.list.map(
-                                (item) => (
-                                    <ul>
-                                    <img src={item.image} 
-                                    width={50}
-                                    height={50} />
-                                    {
-                                <li>
-                                    <a href={item.url}>
-                                        {item.langName}
-                                    </a>
-                                </li>
-                }
-                    </ul>
-                )
-            )
-        } 
-            </div >;
+        function ProjectApp(props) {
+               // return some output for the component using JSX
+                return  <div>
+                    <h1>Find more info about various BackEnd Languages</h1>
+                            <ul>
+                            {
+                                // use map() to loop thru array passed in props.list
+                                props.list.map(
+                                    // Array items added to our JSX markup
+                                    (item,index) => (
+                                        <li key={index}>
+                                            <a href={item.pageLink}>
+                                                {item.langName}
+                                            </a>
+                                            <p>
+                                                {item.info}
+                                            </p>                                            
+                                        </li>
+                                    )
+                                )
+                            }
+                            </ul>
+                        </div>;
+                   }
 
-        }
-
-        // use jQuery to load JSON
-        // getJSON 2 arguments: URL, a function that receives JSON
+        // jQuery code loads JSON file into our browser
         $.getJSON(
-            "Get JSON items",
+            "JSON File loaded",
             function (jsonFromJquery) {
                 // after JSON loaded
                 console.log(jsonFromJquery);
-                // fire up React and build our app
-                // find html element
+                // Find our HTML div
                 const myApplication = document.getElementById('reactApp');
                 // reactDOM createRoot() to identify root HTML element for app
                 const myRoot = createRoot(myApplication);
-                // then call react render() to output component into existing element
+                // Call react render() to output component into existing element
                 myRoot.render(
-                    <projectApp list={jsonFromJquery} />
-
+                    <ProjectApp list={jsonFromJquery} />
                 );
             }
         );

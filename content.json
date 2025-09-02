@@ -1,20 +1,20 @@
 [
     {
-        "id": "1",
         "langName":"React",
-        "url":"https://www.react.dev",
-        "imagePath":"../images/react.svg"
+        "pageLink":"https://www.react.dev",
+        "imagePath":"../images/react.svg",
+        "info": "React lets you build user interfaces out of individual pieces called components. Create your own React components like Thumbnail, LikeButton, and Video. Then combine them into entire screens, pages, and apps."
     },
     {
-        "id": "2",
         "langName":"NodeJS",
-        "url":"https://www.nodejs.org",
-        "imagePath":"../images/nodejs.svg"
+        "pageLink":"https://www.nodejs.org",
+        "imagePath":"../images/nodejs.svg",
+        "info": "Node.js is a free, open-source, cross-platform JavaScript runtime environment that lets developers create servers, web apps, command line tools and scripts."
     },
     {
-        "id": "3",
         "langName":"Python",
-        "url":"https://www.python.org/",
-        "imagePath":"../images/python.svg"
+        "pageLink":"https://www.python.org/",
+        "imagePath":"../images/python.svg",
+        "info": "Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation."
     }
 ]

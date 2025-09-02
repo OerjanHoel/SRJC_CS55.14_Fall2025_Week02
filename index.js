@@ -9,10 +9,10 @@ const myhttp = require("http");
 const fs = require("fs").promises;
 
 // create a function to respond to http requests
-const requestListener = function( myrequest, myresponse ) {
-    console.log( myrequest.url );
+const requestListener = function( webReq, webRes ) {
+    console.log( webReq.url );
 
-    if ( myrequest.url === '/' ) {
+    if ( webReq.url === '/' ) {
         // check request url, if root, return html file
         // special variable __dirname has absolute path of where node code is running
         fs.readFile(__dirname + "/home.html")
@@ -20,11 +20,11 @@ const requestListener = function( myrequest, myresponse ) {
                 // function(contents) {...}
                 contents => {
                     // set http response header entry
-                    myresponse.setHeader("Content-Type", "text/html; charset=UTF-8");
+                    webRes.setHeader("Content-Type", "text/html; charset=UTF-8");
                     // return 200 OK http status code
-                    myresponse.writeHead(200);
+                    webRes.writeHead(200);
                     // send back file contents + close response
-                    myresponse.end(contents);
+                    webRes.end(contents);
                 }
             );
     } else {
@@ -33,11 +33,11 @@ const requestListener = function( myrequest, myresponse ) {
             .then(
                 contents => {
                     // set http response header entry
-                    myresponse.setHeader("Content-Type", "application/json; charset=UTF-8");
+                    webRes.setHeader("Content-Type", "application/json; charset=UTF-8");
                     // return 200 OK http status code
-                    myresponse.writeHead(200);
+                    webRes.writeHead(200);
                     // send back file contents + close response
-                    myresponse.end(contents);
+                    webRes.end(contents);
                 }
             );
     }
