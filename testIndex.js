@@ -3,19 +3,21 @@
 // Get http module form Node
 const http = require("http");
 // Get file system module from Node
-const fs = require("fs").promises;
+const fs = require('fs').promises;
 
 // Set the reachable url and port number
-const host = 'localhost';
+const host = '127.0.0.1';
 const port = 8080;
 
 // Create the instance that will serve the html file
 const requestListener = function (req, res) {
-    console.log(req.url)
-    fs.readFile(__dirname + "/home.html")
+  console.log('Loading file');  
+
+   fs.readFile(__dirname + "/home.html")
+        
         // Use then() method if html file able to resolve. 200 Standard succes code
         .then(contents => {
-            res.setHeader("Content-Type", "text/html");
+            res.setHeader("Content-Type", "text/html; charset=UTF-8");
             res.writeHead(200);
             res.end(contents);
         })
@@ -24,14 +26,16 @@ const requestListener = function (req, res) {
             res.writeHead(500);
             res.end(err);
             return;
-        });
+        }); 
 };
 
 // Create the server
-const nodeServer = http.createServer(
+let nodeServer = http.createServer(
     requestListener
 );
+console.log('Server Started');
 // Listen for incoming requests
 nodeServer.listen(port, host, () => {
     console.log(`Server is running on http://${host}:${port}`);
 });
+ 

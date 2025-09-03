@@ -1,5 +1,5 @@
 // Week 2 node.js and react.js app project
-// React v 19.1
+
 // Project Scope: Create Node server to serve JSON data to simple react application
 
 // use http package fron node.js
@@ -10,7 +10,7 @@ const fs = require("fs").promises;
 
 // create a function to respond to http requests
 const requestListener = function( webReq, webRes ) {
-    console.log( webReq.url );
+    console.log( 'Loading file' );
 
     if ( webReq.url === '/' ) {
         // check request url, if root, return html file
