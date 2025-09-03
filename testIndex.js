@@ -11,10 +11,10 @@ const port = 8080;
 
 // Create the instance that will serve the html file
 const requestListener = function (req, res) {
-  console.log('Loading file');  
+    console.log('Loading file');
 
-   fs.readFile(__dirname + "/home.html")
-        
+    fs.readFile(__dirname + "/testHome.html")
+
         // Use then() method if html file able to resolve. 200 Standard succes code
         .then(contents => {
             res.setHeader("Content-Type", "text/html; charset=UTF-8");
@@ -26,7 +26,7 @@ const requestListener = function (req, res) {
             res.writeHead(500);
             res.end(err);
             return;
-        }); 
+        });
 };
 
 // Create the server
@@ -38,4 +38,3 @@ console.log('Server Started');
 nodeServer.listen(port, host, () => {
     console.log(`Server is running on http://${host}:${port}`);
 });
- 

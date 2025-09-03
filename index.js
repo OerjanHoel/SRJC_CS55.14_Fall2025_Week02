@@ -1,7 +1,5 @@
 // Week 2 node.js and react.js app project
 
-// Project Scope: Create Node server to serve JSON data to simple react application
-
 // use http package fron node.js
 const myhttp = require("http");
 
@@ -9,10 +7,10 @@ const myhttp = require("http");
 const fs = require("fs").promises;
 
 // create a function to respond to http requests
-const requestListener = function( webReq, webRes ) {
-    console.log( 'Loading file' );
+const requestListener = function (webReq, webRes) {
+    console.log('Loading file');
 
-    if ( webReq.url === '/' ) {
+    if (webReq.url === '/') {
         // check request url, if root, return html file
         // special variable __dirname has absolute path of where node code is running
         fs.readFile(__dirname + "/home.html")
@@ -54,4 +52,4 @@ let nodeServer = myhttp.createServer(
 // ask http to start listening on a tcp port for incoming http requests
 // listen() takes 2 args: 1: tcp port #, string of the ip address to listen (0.0.0.0)
 // http://127.0.0.1:8080/
-nodeServer.listen( 8080, "127.0.0.1" );
+nodeServer.listen(8080, "127.0.0.1");
